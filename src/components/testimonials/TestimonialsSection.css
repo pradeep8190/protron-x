@@ -1,0 +1,172 @@
+/* =========================================================================
+   TESTIMONIALS SECTION - PINNED WHITE CHAMBER WITH FOOTER CURTAIN OVERLAP
+   ========================================================================= */
+
+.testimonials-track {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 135vh;
+  min-height: 135vh;
+  background-color: #ffffff;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(5rem, 8vh, 8rem) 2rem 16rem 2rem;
+  overflow: hidden;
+}
+
+.testimonials-sticky-chamber {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.white-stage-ambient-light {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 380px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(0, 0, 0, 0.03) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 2;
+  filter: blur(60px);
+}
+
+.testimonials-container {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* White Stage Header */
+.testimonials-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 1.75rem;
+}
+
+/* White Stage Titles */
+.testimonials-title.title-light {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 550;
+  letter-spacing: -1.3px;
+  line-height: 1.15;
+  color: #09090b;
+  background: linear-gradient(
+    180deg,
+    #09090b 0%,
+    #18181b 30%,
+    #3f3f46 68%,
+    #71717a 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.testimonials-subtitle.subtitle-light {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(14px, 1.35vw, 16px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #71717a;
+  letter-spacing: -0.2px;
+  margin-top: 0.6rem;
+  max-width: 580px;
+}
+
+/* Proof Chamber Structure (Compact, Centered, 100% Visible) */
+.proof-chamber-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Active Quote Box */
+.active-proof-display.proof-light {
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.proof-quote-text.quote-light {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(16px, 1.75vw, 19.5px);
+  font-weight: 450;
+  line-height: 1.65;
+  letter-spacing: -0.02em;
+  color: #18181b;
+  margin-bottom: 1.2rem;
+}
+
+.proof-author-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.proof-avatar-orb.avatar-light {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f4f4f5;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #18181b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.proof-author-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.proof-author-name.name-light {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #09090b;
+  line-height: 1.2;
+}
+
+.proof-author-role.role-light {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #71717a;
+  line-height: 1.2;
+  margin-top: 1px;
+}

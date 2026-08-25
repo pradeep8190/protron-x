@@ -1,0 +1,103 @@
+/* =========================================================================
+   ROLLING COUNTER - PREMIUM ODOMETER DIGIT ANIMATION
+   Apple-grade split-column counter with independent digit rolling
+   ========================================================================= */
+
+.rolling-counter-root {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  user-select: none;
+}
+
+.rolling-counter-digits {
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  overflow: visible;
+}
+
+/* ─── INDIVIDUAL DIGIT COLUMN ─── */
+.digit-column {
+  position: relative;
+  overflow: visible;
+}
+
+.digit-mask {
+  position: relative;
+  width: 48px;
+  height: 72px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Vertical strip holding 0-9 stacked at fixed pixel positions */
+.digit-strip {
+  position: relative;
+  width: 100%;
+  will-change: transform;
+  transform: translateY(0px);
+}
+
+/* Single digit cell */
+.digit-cell {
+  width: 100%;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 52px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "cv01" 1;
+
+  /* Muted inactive digit */
+  color: rgba(255, 255, 255, 0.12);
+  transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              text-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Active (visible) digit */
+.digit-cell.active {
+  color: #ffffff;
+  text-shadow:
+    0 0 32px rgba(255, 255, 255, 0.4),
+    0 2px 24px rgba(0, 0, 0, 0.9);
+}
+
+/* Subtle top/bottom fade masks for depth */
+.digit-mask::before,
+.digit-mask::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 20px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.digit-mask::before {
+  top: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, transparent 100%);
+}
+
+.digit-mask::after {
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.95) 0%, transparent 100%);
+}
+
+/* ─── LABEL ─── */
+.rolling-counter-label {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.45);
+  padding-bottom: 3px;
+}

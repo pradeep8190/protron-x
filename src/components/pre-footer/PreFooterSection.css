@@ -1,0 +1,204 @@
+/* =========================================================================
+   PRE-FOOTER SECTION (CTA ACTION BLOCK + RESEND-GRADE BRAND WATERMARK)
+   ========================================================================= */
+
+.pre-footer-section {
+  position: relative;
+  width: 100%;
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8.5rem 0 0 0;
+  overflow: hidden;
+  z-index: 20;
+  box-shadow: 0 -30px 80px rgba(0, 0, 0, 0.95);
+}
+
+/* =========================================================================
+   CTA Action Block (Headline, Subheading, Primary & Secondary Buttons)
+   ========================================================================= */
+.pre-footer-cta-container {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 1.5rem 6.5rem 1.5rem;
+  z-index: 4;
+}
+
+.pre-footer-cta-heading {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: #ffffff;
+  background: linear-gradient(180deg, #ffffff 0%, #d4d4d8 60%, #8e8e93 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.pre-footer-cta-subheading {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: clamp(14px, 1.8vw, 17px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: #8e8e93;
+  letter-spacing: -0.015em;
+  margin: 1rem 0 1.75rem 0;
+  max-width: 600px;
+}
+
+.pre-footer-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.pre-footer-primary-btn {
+  font-family: 'Ubuntu Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #000000;
+  background: #ffffff;
+  padding: 11px 26px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.22);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pre-footer-primary-btn:hover {
+  background: #f4f4f5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.4);
+}
+
+.pre-footer-secondary-btn {
+  font-family: 'Ubuntu Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #a1a1aa;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 11px 24px;
+  border-radius: 9999px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.pre-footer-secondary-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* =========================================================================
+   Brand Watermark Stage
+   ========================================================================= */
+.resend-brand-stage {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  height: 230px;
+}
+
+.resend-brand-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Base Text Layer: #808080 to #00000000 Gradient */
+.resend-text-base {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: clamp(90px, 19.5vw, 310px);
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  background: linear-gradient(180deg, rgba(128, 128, 128, 0.18) 0%, rgba(0, 0, 0, 0) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  user-select: none;
+  margin-bottom: -46px; /* Submerges bottom ~30% into hairline */
+}
+
+/* Hover Layer: Pure Outer Silhouette Glow (Zero inner junction lines) */
+.resend-text-glow {
+  position: absolute;
+  bottom: -46px; /* Aligned with base */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: clamp(90px, 19.5vw, 310px);
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  color: #000000;
+  text-shadow:
+    0 0 2px #ffffff,
+    0 0 8px rgba(255, 255, 255, 0.95),
+    0 0 20px rgba(255, 255, 255, 0.6);
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  mask-image: radial-gradient(
+    circle 280px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    black 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    transparent 70%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle 280px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    black 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    transparent 70%
+  );
+}
+
+.resend-brand-stage.is-hovered .resend-text-glow {
+  opacity: 1;
+}

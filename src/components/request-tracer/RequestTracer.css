@@ -1,0 +1,639 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap');
+
+/* =========================================================================
+   REQUEST TRACER SECTION - 2-COLUMN PREMIUM WORKLOAD SHOWCASE
+   ========================================================================= */
+
+.tracer-section {
+  position: relative;
+  width: 100%;
+  min-height: 85vh;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(5rem, 9vh, 9rem) 2.5rem;
+  overflow: hidden;
+  user-select: none;
+  z-index: 10;
+}
+
+/* Atmospheric Soft Ambient Spotlight */
+.tracer-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.035) 0%,
+    rgba(255, 255, 255, 0.008) 45%,
+    transparent 70%
+  );
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 2-Column Responsive stage wrapper */
+.tracer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6.5rem;
+  width: 100%;
+  max-width: 1240px;
+  z-index: 5;
+}
+
+/* 2-Card Overlapping Stage (Left-Aligned, Compact) */
+.tracer-stage {
+  position: relative;
+  width: 650px;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 0;
+  flex-shrink: 0;
+  z-index: 5;
+}
+
+/* =========================================================================
+   BACK CARD (Compact, Shorter and Wider, Offset to the Right)
+   ========================================================================= */
+.tracer-card-back {
+  position: absolute;
+  left: 190px;
+  top: 40px;
+  width: 460px;
+  height: 230px;
+  border-radius: 18px;
+  background: #000000;
+  border: none;
+  
+  padding: 1.8rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+  
+  z-index: 2;
+}
+
+/* Physical Edge Light — top hairline + left edge fading at 40% */
+.tracer-card-back::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  border-left: 1px solid transparent;
+  border-right: none;
+  border-bottom: none;
+  -webkit-mask-image:
+    linear-gradient(to right, rgba(255,255,255,0.6) 0%, rgba(255,255,255,1) 15%, rgba(255,255,255,1) 85%, rgba(255,255,255,0) 100%),
+    linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 40%);
+  mask-image:
+    linear-gradient(to right, rgba(255,255,255,0.6) 0%, rgba(255,255,255,1) 15%, rgba(255,255,255,1) 85%, rgba(255,255,255,0) 100%),
+    linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 40%);
+  -webkit-mask-composite: source-over;
+  mask-composite: add;
+  /* Re-draw left edge as a gradient overlay */
+  background: linear-gradient(to bottom, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 25%, rgba(255,255,255,0) 40%);
+  background-size: 1px 100%;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+
+.tracer-back-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 3px;
+  margin: 0 0 auto auto;
+  width: 100%;
+}
+
+.tracer-back-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #71717a;
+}
+
+.tracer-back-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #38383f;
+  margin: 1px 0;
+}
+
+.tracer-back-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: #52525b;
+}
+
+/* ── Live Sparkline Heartbeat Waveform ── */
+.tracer-sparkline-container {
+  margin: auto 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.25rem 0;
+}
+
+.tracer-sparkline-svg {
+  width: 280px;
+  height: 38px;
+  overflow: visible;
+}
+
+.tracer-sparkline-svg path {
+  transition: d 0.38s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.3s ease;
+}
+
+.tracer-card-back:hover .tracer-sparkline-svg path {
+  stroke: rgba(255, 255, 255, 0.24);
+}
+
+.tracer-back-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2.2rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tracer-back-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.stat-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: #e4e4e7;
+}
+
+.stat-lbl {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #52525b;
+}
+
+/* =========================================================================
+   FRONT FLOATING CARD (Taller Foreground Left)
+   ========================================================================= */
+.tracer-card-front {
+  position: relative;
+  margin-left: 0;
+  width: 440px;
+  max-width: 100%;
+  height: 470px;
+  min-height: 470px;
+  border-radius: 20px;
+  
+  background: #000000;
+  border: none;
+  
+  padding: 1.5rem 1.65rem 0.5rem 1.65rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  
+  box-shadow: 0 35px 80px -10px rgba(0, 0, 0, 0.98);
+  
+  z-index: 5;
+}
+
+/* Physical Edge Light — top hairline + left edge fading at 40% */
+.tracer-card-front::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 20;
+  border-top: 1px solid rgba(255, 255, 255, 0.32);
+  border-left: 1px solid transparent;
+  border-right: none;
+  border-bottom: none;
+  -webkit-mask-image:
+    linear-gradient(to right, rgba(255,255,255,0.5) 0%, rgba(255,255,255,1) 12%, rgba(255,255,255,1) 88%, rgba(255,255,255,0) 100%),
+    linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 40%);
+  mask-image:
+    linear-gradient(to right, rgba(255,255,255,0.5) 0%, rgba(255,255,255,1) 12%, rgba(255,255,255,1) 88%, rgba(255,255,255,0) 100%),
+    linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 40%);
+  -webkit-mask-composite: source-over;
+  mask-composite: add;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.12) 22%, rgba(255,255,255,0) 40%);
+  background-size: 1px 100%;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+
+/* Softer bottom fade shadow overlay so the 3rd request is visible but faded */
+.tracer-card-front::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 85px;
+  background: linear-gradient(to top, #000000 0%, rgba(0, 0, 0, 0.9) 30%, transparent 100%);
+  pointer-events: none;
+  z-index: 10;
+  border-radius: 0 0 20px 20px;
+}
+
+/* ── Resend-Style Event Timeline Container (Shifting Engine) ── */
+.tracer-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  margin-top: 0;
+  transform: translateY(0);
+}
+
+/* Active transition: starts from -104px (hiding the prepended item) and slides down to 0px */
+.tracer-timeline.is-shifting-down {
+  animation: slideDownMarquee 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDownMarquee {
+  from {
+    transform: translateY(-104px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.timeline-item {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  height: 80px;
+  box-sizing: border-box;
+  opacity: 1;
+}
+
+/* ── Dynamic Opacity and Fades for Downward Stream ── */
+.timeline-item.item-0 {
+  opacity: 1; /* On idle, first item is fully bright */
+}
+
+/* When shifting down, the newly prepended item-0 fades in */
+.tracer-timeline.is-shifting-down .timeline-item.item-0 {
+  opacity: 0;
+  animation: itemFadeIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.timeline-item.item-1 {
+  opacity: 1; /* Position 2 remains fully bright */
+}
+
+.timeline-item.item-2 {
+  opacity: 0.32; /* Position 3 is dimmed on idle */
+}
+
+/* When shifting down, the item sliding into Position 3 (item-2) fades to 0.32 */
+.tracer-timeline.is-shifting-down .timeline-item.item-2 {
+  opacity: 1;
+  animation: itemFadeToDim 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* The exiting 4th item (item-3) starts dimmed and fades out completely */
+.tracer-timeline.is-shifting-down .timeline-item.item-3 {
+  opacity: 0.32;
+  animation: itemFadeOut 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes itemFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes itemFadeToDim {
+  from { opacity: 1; }
+  to { opacity: 0.32; }
+}
+
+@keyframes itemFadeOut {
+  from { opacity: 0.32; }
+  to { opacity: 0; }
+}
+
+/* Timeline Left Column (Squircle Icons + Connecting Line) */
+.timeline-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.timeline-icon-box {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+.timeline-icon-box.completed {
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.timeline-icon-box.routed {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.icon-green {
+  color: #22c55e;
+}
+
+.icon-blue {
+  color: #3b82f6;
+}
+
+/* Vertical wire line connecting squircle boxes */
+.timeline-connector-line {
+  position: absolute;
+  top: 30px;
+  bottom: -2.8rem;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.18);
+  z-index: 1;
+  transition: background 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Hover: Soft glow on connector lines & icon boxes ── */
+.tracer-card-front:hover .timeline-connector-line {
+  background: rgba(255, 255, 255, 0.40);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.14),
+              0 0 4px rgba(255, 255, 255, 0.10);
+}
+
+.tracer-card-front:hover .timeline-icon-box.completed {
+  background: rgba(34, 197, 94, 0.14);
+  box-shadow: 0 0 22px rgba(34, 197, 94, 0.28),
+              0 0 8px rgba(34, 197, 94, 0.16);
+}
+
+.tracer-card-front:hover .timeline-icon-box.routed {
+  background: rgba(59, 130, 246, 0.14);
+  box-shadow: 0 0 22px rgba(59, 130, 246, 0.28),
+              0 0 8px rgba(59, 130, 246, 0.16);
+}
+
+/* Timeline Right Column (Headers & Prose Sentence rows) */
+.timeline-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.event-header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+  text-transform: capitalize;
+  border: none;
+}
+
+.status-badge.completed {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+}
+
+.status-badge.routed {
+  background: rgba(59, 130, 246, 0.12);
+  color: #3b82f6;
+}
+
+.time-display-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #52525b;
+}
+
+.clock-icon {
+  margin-top: 1px;
+}
+
+.event-timestamp {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+}
+
+/* Sentence Rows (Resend Natural Prose Style) */
+.event-sentence-row {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #a1a1aa;
+}
+
+/* Ultra-crisp Entity Badges (ava@figma.com style) */
+.entity-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 1px 6px;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  letter-spacing: -0.01em;
+}
+
+.globe-inline {
+  color: #71717a;
+}
+
+.entity-pill.latency {
+  color: #e4e4e7;
+  font-weight: 550;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================================================
+   RIGHT SIDE MARKETING COPY COLUMN (Ubuntu Sans + Source Serif 4 Combo)
+   ========================================================================= */
+.tracer-text-column {
+  flex: 1;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.tracer-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #71717a;
+  margin-bottom: 0.85rem;
+}
+
+.tracer-heading {
+  font-family: 'Ubuntu Sans', sans-serif;
+  font-size: clamp(30px, 3.8vw, 39px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.2rem 0;
+}
+
+.tracer-desc {
+  font-family: 'Source Serif 4', 'Source Serif Pro', serif;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: #a1a1aa;
+  margin: 0 0 2.2rem 0;
+  font-weight: 400;
+}
+
+.tracer-features-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.features-subhead {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #52525b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+.tracer-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.8rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.feature-card {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.feature-indicator {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #3f3f46;
+  flex-shrink: 0;
+}
+
+.feature-title {
+  font-family: 'Ubuntu Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #e4e4e7;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* =========================================================================
+   RESPONSIVE LAYOUT STACKING & CARD SCALING
+   ========================================================================= */
+@media (max-width: 1140px) {
+  .tracer-container {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 4.5rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .tracer-stage {
+    transform: scale(0.8);
+    transform-origin: left center;
+    height: 360px;
+    width: 520px;
+  }
+  
+  .tracer-section {
+    padding: clamp(3rem, 6vh, 6rem) 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tracer-stage {
+    transform: scale(0.64);
+    transform-origin: left center;
+    height: 290px;
+    width: 410px;
+  }
+  
+  .tracer-features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+}
+
+/* Initial opacity state for GSAP scroll entrance animation */
+.tracer-stage,
+.tracer-tag,
+.tracer-heading,
+.tracer-desc,
+.features-subhead,
+.feature-card {
+  opacity: 0;
+}
+

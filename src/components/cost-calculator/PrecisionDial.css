@@ -1,0 +1,179 @@
+/* =========================================================================
+   VERTICAL 3D OPTICAL BARREL PRECISION DIAL
+   Apple-grade hairline graduation instrument
+   ========================================================================= */
+
+.v-dial-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  pointer-events: auto;
+  user-select: none;
+}
+
+/* ─── 3D OPTICAL VERTICAL BARREL STAGE ─── */
+.v-ruler-stage {
+  position: relative;
+  width: 90px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  perspective: 750px;
+  perspective-origin: 50% 50%;
+  background: transparent !important;
+  border: none !important;
+  overflow: hidden;
+  box-shadow: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* Subtle vertical center-line ambient glow */
+.v-ruler-stage::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  transform: translateY(-0.5px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.v-ruler-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  transform-style: preserve-3d;
+  padding-left: 0;
+}
+
+.v-ruler-wrapper:active {
+  cursor: grabbing;
+}
+
+/* ─── POINTER ON THE LEFT SIDE ─── */
+.v-center-needle-anchor {
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  height: 0;
+  z-index: 15;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+}
+
+.v-needle-glow-spot {
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(4px);
+}
+
+.v-needle-triangle {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid #ffffff;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+  transform-origin: left center;
+}
+
+/* ─── VIRTUAL INFINITE TRACK ─── */
+.v-ruler-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transform-style: preserve-3d;
+  transform: translateY(-8px);
+  will-change: transform;
+}
+
+/* ─── TICK ELEMENTS ─── */
+.v-tick-unit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 24px;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  transform-origin: left center;
+}
+
+.v-tick-number {
+  display: none;
+}
+
+/* ─── EXACT BAR SHAPE & SIZING FROM SCROOLL (TRANSPOSED VERTICAL) ─── */
+.v-tick-line {
+  height: 3px;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.28);
+  transition: background-color 0.12s, box-shadow 0.12s, width 0.12s, height 0.12s;
+  transform-origin: left center;
+  flex-shrink: 0;
+}
+
+.v-tick-unit.minor .v-tick-line {
+  width: 26px;
+}
+
+.v-tick-unit.major .v-tick-line {
+  width: 38px;
+  height: 3.5px;
+}
+
+/* Glowing Platinum Active Ticks */
+.v-tick-unit.active .v-tick-line {
+  background: linear-gradient(90deg, #cbd5e1, #ffffff);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
+}
+
+/* Selected Center Line */
+.v-tick-unit.selected .v-tick-line {
+  background: #ffffff;
+  box-shadow: 
+    0 0 16px rgba(255, 255, 255, 1.0),
+    0 0 32px rgba(255, 255, 255, 0.9);
+  width: 48px;
+  height: 4.5px;
+}

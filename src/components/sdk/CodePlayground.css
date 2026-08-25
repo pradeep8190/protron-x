@@ -1,0 +1,524 @@
+.code-playground-container {
+  position: relative;
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* ─── DEV ECOSYSTEM & TELEMETRY PILLS BAR (CLEAN, NO ICONS) ─── */
+.dev-ecosystem-pills-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0 4px;
+}
+
+/* Fast Install Command Pill */
+.dev-install-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #a1a1aa;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dev-install-pill:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.dev-install-pill code {
+  color: #d4d4d8;
+}
+
+.install-copy-indicator {
+  display: inline-flex;
+  align-items: center;
+  color: #71717a;
+  margin-left: 2px;
+}
+
+/* Runtime Capability Pills Group (Clean pure text, no border boxes) */
+.dev-capability-pills {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.dev-cap-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-family: 'Ubuntu Sans', sans-serif;
+  font-weight: 350;
+  font-size: 12.5px;
+  color: #71717a;
+  letter-spacing: -0.1px;
+}
+
+/* Master Terminal Card (One Unified Container) */
+.playground-terminal-card {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: #000000;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 30px 70px -12px rgba(0, 0, 0, 0.98),
+    0 0 45px rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* Left Sidebar Panel (Laser Gradient Divider: Thick center, fades out at tips) */
+.playground-sidebar-panel {
+  position: relative;
+  width: 210px;
+  flex-shrink: 0;
+  min-height: 420px;
+  background: rgba(5, 5, 8, 0.6);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  height: 48px;
+  box-sizing: border-box;
+  background: #050508;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Vertical Tools List (Centered in card with proportional sizing) */
+.sidebar-tools-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+  gap: 14px;
+}
+
+.sidebar-tool-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: transparent;
+  border: none;
+  padding: 3px 8px;
+  font-family: 'Ubuntu Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #71717a;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: -0.2px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+
+/* Hover: No glow, clean slide to the right */
+.sidebar-tool-item:hover {
+  color: #d4d4d8;
+  transform: translateX(4px);
+}
+
+/* Selected: Soft very soft muted red */
+.sidebar-tool-item.selected {
+  color: #f87171;
+}
+
+.sidebar-tool-item.selected:hover {
+  color: #fca5a5;
+  transform: translateX(4px);
+}
+
+.playground-sidebar-panel::after {
+  content: '';
+  position: absolute;
+  top: 48px;
+  bottom: 5%;
+  right: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.03) 85%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Right Main Terminal */
+.playground-terminal-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Terminal Header / Navigation Bar */
+.playground-nav-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 18px;
+  height: 48px;
+  box-sizing: border-box;
+  background: #050508;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Language Switcher Tabs (Slightly Left from Center) */
+.playground-tabs-group {
+  position: absolute;
+  left: 38%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: transparent;
+  padding: 0;
+  border: none;
+}
+
+.playground-tab-btn {
+  font-family: 'Ubuntu Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 350;
+  color: #71717a;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: transparent;
+  border: none !important;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.playground-tab-btn:hover {
+  color: #e4e4e7;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.playground-tab-btn.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: none !important;
+  box-shadow: none;
+}
+
+/* Action Controls (Run + Copy) - Clean & Borderless */
+.playground-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.playground-run-btn {
+  font-family: 'Ubuntu Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: #a1a1aa;
+  background: transparent;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.playground-run-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.playground-run-btn.running {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.playground-copy-btn {
+  font-family: 'Ubuntu Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #71717a;
+  background: transparent;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.playground-copy-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.playground-copy-btn.copied {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Code Display Body with Line Numbers & Fixed Height (Never jumps) */
+.playground-code-body {
+  height: 460px;
+  min-height: 460px;
+  max-height: 460px;
+  padding: 1.25rem 0.5rem 1.25rem 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13.5px;
+  line-height: 1.7;
+  background-color: #000000;
+  box-sizing: border-box;
+}
+
+.code-editor-rows {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: max-content;
+}
+
+.code-editor-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1px 1.5rem 1px 0;
+  transition: background-color 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  cursor: text;
+}
+
+/* Gutter Line Number */
+.code-row-num {
+  width: 48px;
+  min-width: 48px;
+  text-align: right;
+  padding-right: 1.25rem;
+  margin-right: 1.25rem;
+  color: #3f3f46;
+  font-size: 12px;
+  user-select: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.code-row-text {
+  color: #f4f4f5;
+  white-space: pre;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ─── HOVER: ULTRA-PREMIUM LIQUID GLASS EFFECT ON LINE NUMBER & ROW ─── */
+.code-editor-row:hover {
+  background: rgba(255, 255, 255, 0.032);
+}
+
+.code-editor-row:hover .code-row-num {
+  color: #ffffff;
+  font-weight: 500;
+  border-right-color: rgba(255, 255, 255, 0.35);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* Glass Active Edge Line Indicator on Gutter */
+.code-editor-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 4px #ffffff;
+  opacity: 0;
+  transform: scaleY(0.4);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 0 2px 2px 0;
+}
+
+.code-editor-row:hover::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+/* ─── DEFAULT UNHOVERED STATE: SOFT LUMINOUS ZINC SILVER ─── */
+.code-row-text,
+.code-row-text span,
+.tok-comment,
+.tok-string,
+.tok-keyword,
+.tok-constant,
+.tok-property,
+.tok-function {
+  color: #d4d4d8;
+  transition: color 0.18s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.18s ease;
+}
+
+/* ─── HOVER / ACTIVE LINE: DYNAMIC TOKYO NIGHT COLOR ILLUMINATION ─── */
+.code-editor-row:hover .code-row-text span {
+  color: #f4f4f5;
+}
+
+.code-editor-row:hover .tok-keyword {
+  color: #bb9af7 !important;
+  text-shadow: 0 0 12px rgba(187, 154, 247, 0.4);
+}
+
+.code-editor-row:hover .tok-string {
+  color: #9ece6a !important;
+  text-shadow: 0 0 12px rgba(158, 206, 106, 0.35);
+}
+
+.code-editor-row:hover .tok-comment {
+  color: #565f89 !important;
+}
+
+.code-editor-row:hover .tok-property {
+  color: #7aa2f7 !important;
+  text-shadow: 0 0 12px rgba(122, 162, 247, 0.35);
+}
+
+.code-editor-row:hover .tok-function {
+  color: #7dcfff !important;
+  text-shadow: 0 0 12px rgba(125, 207, 255, 0.35);
+}
+
+.code-editor-row:hover .tok-constant {
+  color: #ff9e64 !important;
+  text-shadow: 0 0 12px rgba(255, 158, 100, 0.35);
+}
+
+/* ─── TEXT SELECTION (::selection): CLEAN TRANSLUCENT LIQUID GLASS ─── */
+.playground-code-body ::selection,
+.playground-code-body *::selection {
+  background: rgba(122, 162, 247, 0.28) !important;
+}
+
+.playground-code-body *::-moz-selection {
+  background: rgba(122, 162, 247, 0.28) !important;
+}
+
+/* Execution Console Output Drawer */
+.playground-console-drawer {
+  background: #050508;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1rem 1.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: console-fade-in 0.3s ease-out;
+}
+
+@keyframes console-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.console-header-label {
+  font-size: 10.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #71717a;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.console-log-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.console-timestamp {
+  color: #52525b;
+}
+
+.console-tag {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.console-msg {
+  color: #a1a1aa;
+}
+
+.console-status-ok {
+  color: #ffffff;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (max-width: 768px) {
+  .playground-nav-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .playground-header-actions {
+    justify-content: flex-end;
+  }
+  .playground-code-body {
+    font-size: 12px;
+    padding: 1.25rem 1rem;
+  }
+  .dev-ecosystem-pills-bar {
+    justify-content: center;
+  }
+}

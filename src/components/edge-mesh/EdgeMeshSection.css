@@ -1,0 +1,176 @@
+.edge-mesh-section {
+  position: relative;
+  width: 100%;
+  min-height: 680px;
+  background-color: #000000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px 140px;
+  margin-top: -20px;
+}
+
+/* Left Side Ambient White Glow Flare */
+.edge-mesh-glow-left {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 480px;
+  height: 520px;
+  background: radial-gradient(ellipse at 0% 50%, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.025) 45%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(50px);
+}
+
+/* Right Side Ambient White Glow Flare */
+.edge-mesh-glow-right {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 480px;
+  height: 520px;
+  background: radial-gradient(ellipse at 100% 50%, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.025) 45%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(50px);
+}
+
+/* Core Center Soft Ambient White Glow */
+.edge-mesh-ambient-glow {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 850px;
+  height: 480px;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.025) 40%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(40px);
+}
+
+/* Text Content Container */
+.edge-mesh-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Threads WebGL Canvas */
+.edge-mesh-threads-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+  mask-image: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
+}
+
+/* Main Cinematic Headline: Ubuntu Sans 400 with Rich Luminous White Glow */
+.edge-mesh-title {
+  font-family: 'Ubuntu Sans', sans-serif;
+  font-size: clamp(2.5rem, 5.2vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 60%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.35)) drop-shadow(0 0 60px rgba(255, 255, 255, 0.15)) drop-shadow(0 8px 32px rgba(0, 0, 0, 0.9));
+  margin-bottom: 20px;
+  text-wrap: balance;
+}
+
+/* Minimalist Subtitle: Ubuntu Sans 400 */
+.edge-mesh-subtitle {
+  font-family: 'Ubuntu Sans', sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: #a1a1aa;
+  letter-spacing: -0.01em;
+  max-width: 700px;
+  margin-bottom: 40px;
+  text-wrap: pretty;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.7));
+}
+
+/* Direct UI Metric Strip */
+.edge-mesh-metric-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.8));
+}
+
+.edge-mesh-metric-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.edge-mesh-metric-val {
+  font-family: 'Ubuntu Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.edge-mesh-metric-lbl {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #a1a1aa;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.edge-mesh-metric-divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .edge-mesh-section {
+    min-height: 520px;
+    padding: 20px 16px 60px;
+  }
+
+  .edge-mesh-glow-left,
+  .edge-mesh-glow-right {
+    width: 200px;
+    height: 300px;
+  }
+
+  .edge-mesh-metric-strip {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .edge-mesh-metric-divider {
+    display: none;
+  }
+}

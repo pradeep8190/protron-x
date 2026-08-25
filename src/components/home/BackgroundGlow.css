@@ -1,0 +1,241 @@
+.bg-glow-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background-color: #000000;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Layer 0: Ultra-Soft Ambient Film Grain Noise Texture */
+.bg-noise-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.038;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
+  transform: translateZ(0);
+}
+
+/* Layer 1: Intense Core Spotlight at Top Center */
+.bg-spotlight-core {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+  width: 700px;
+  height: 450px;
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 25%,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.2) 30%,
+    rgba(255, 255, 255, 0.05) 60%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  filter: blur(45px);
+  opacity: 0.9;
+  will-change: transform;
+}
+
+/* Layer 2: Wide Ambient White Bloom */
+.bg-spotlight-wide {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+  width: 1200px;
+  max-width: 100vw;
+  height: 700px;
+  background: radial-gradient(
+    ellipse 75% 55% at 50% 20%,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(220, 225, 240, 0.08) 45%,
+    rgba(140, 150, 180, 0.02) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  filter: blur(75px);
+  opacity: 0.85;
+  will-change: transform;
+}
+
+/* Layer 3: Conic Light Shaft */
+.bg-light-shaft {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: conic-gradient(
+    from 150deg at 50% 0%,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.06) 25deg,
+    rgba(255, 255, 255, 0.18) 30deg,
+    rgba(255, 255, 255, 0.06) 35deg,
+    transparent 60deg
+  );
+  filter: blur(35px);
+  opacity: 0.7;
+}
+
+/* Layer 4: Soft Ambient Grid (Zero Hover, Ultra-Smooth Low Opacity) */
+.bg-ambient-grid {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 768px;
+  height: 520px;
+  display: grid;
+  grid-template-columns: repeat(16, 48px);
+  grid-template-rows: repeat(11, 48px);
+  pointer-events: none !important;
+  user-select: none;
+  z-index: 2;
+  -webkit-mask-image: radial-gradient(
+    ellipse 65% 55% at 50% 22%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.7) 35%,
+    rgba(0, 0, 0, 0.15) 65%,
+    rgba(0, 0, 0, 0) 90%
+  );
+  mask-image: radial-gradient(
+    ellipse 65% 55% at 50% 22%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.7) 35%,
+    rgba(0, 0, 0, 0.15) 65%,
+    rgba(0, 0, 0, 0) 90%
+  );
+}
+
+/* Individual Grid Cell */
+.grid-tile-cell {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background-color: transparent;
+  pointer-events: none !important;
+}
+
+/* Subtle, Soft Low-Opacity Fills */
+.grid-tile-cell.tile-subtle {
+  background-color: rgba(255, 255, 255, 0.025);
+}
+
+.grid-tile-cell.tile-soft {
+  background-color: rgba(255, 255, 255, 0.045);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.grid-tile-cell.tile-glow {
+  background-color: rgba(255, 255, 255, 0.075);
+  border-color: rgba(255, 255, 255, 0.09);
+}
+
+/* Layer 5: Laser Lines & Spark Crosshair Accents */
+.bg-spark-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.spark-point {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.spark-flare {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spark-core {
+  width: 3px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 6px 2px rgba(255, 255, 255, 0.9),
+    0 0 14px 4px rgba(255, 255, 255, 0.5);
+  animation: pulse-spark 3s ease-in-out infinite;
+}
+
+.spark-cross-h {
+  position: absolute;
+  width: 12px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+}
+
+.spark-cross-v {
+  position: absolute;
+  height: 12px;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+}
+
+/* Hairline Laser Circuits */
+.laser-line-v {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.4) 30%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.3) 80%, transparent);
+}
+
+.laser-line-h {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3) 20%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.2) 80%, transparent);
+}
+
+@keyframes pulse-spark {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+
+/* Thin Line Grid Corner Accents */
+.corner-grid-accent {
+  position: absolute;
+  bottom: 0;
+  width: 180px;
+  height: 180px;
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 1;
+  will-change: opacity;
+}
+
+.corner-grid-accent.bottom-left {
+  left: 0;
+  mask-image: radial-gradient(circle at bottom left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.3) 55%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at bottom left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.3) 55%, transparent 75%);
+}
+
+.corner-grid-accent.bottom-right {
+  right: 0;
+  mask-image: radial-gradient(circle at bottom right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.3) 55%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at bottom right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.3) 55%, transparent 75%);
+}
