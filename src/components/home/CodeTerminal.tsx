@@ -178,7 +178,7 @@ const SNIPPETS: CodeSnippet[] = [
   }
 ]
 
-export const CodeTerminal: React.FC = () => {
+export const CodeTerminal: React.FC<{ isReady?: boolean }> = ({ isReady = true }) => {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [activeTab, setActiveTab] = useState<string>('ai-stream')
   const [copied, setCopied] = useState<boolean>(false)
@@ -186,13 +186,14 @@ export const CodeTerminal: React.FC = () => {
   const currentSnippet = SNIPPETS.find((s) => s.id === activeTab) || SNIPPETS[0]
 
   useEffect(() => {
-    // Apple-grade slide-up fade-in on mount
-    gsap.fromTo(
+    if (!isReady) return
+
+    // CSS already sets opacity:0 + translateY(32px) + scale(0.98)
+    gsap.to(
       wrapperRef.current,
-      { opacity: 0, y: 32, scale: 0.98 },
       { opacity: 1, y: 0, scale: 1, duration: 1.4, ease: 'power4.out', delay: 0.35 }
     )
-  }, [])
+  }, [isReady])
 
   const handleCopy = () => {
     navigator.clipboard.writeText(currentSnippet.rawText)
@@ -201,7 +202,7 @@ export const CodeTerminal: React.FC = () => {
   }
 
   return (
-    <div ref={wrapperRef} className="terminal-wrapper" style={{ opacity: 0 }}>
+    <div ref={wrapperRef} className="terminal-wrapper">
       {/* Decorative hairline circuit connectors on left and right */}
       <div className="terminal-connector-left" aria-hidden="true" />
       <div className="terminal-connector-right" aria-hidden="true" />

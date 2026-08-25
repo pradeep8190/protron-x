@@ -2,31 +2,30 @@ import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import './FloatingStatusCards.css'
 
-export const FloatingStatusCards: React.FC = () => {
+export const FloatingStatusCards: React.FC<{ isReady?: boolean }> = ({ isReady = true }) => {
   const leftCardRef = useRef<HTMLDivElement>(null)
   const rightCardRef = useRef<HTMLDivElement>(null)
   const wiresRef = useRef<SVGSVGElement>(null)
 
   useEffect(() => {
-    // Elegant slide-in from sides and fade-in for wires
-    gsap.fromTo(
+    if (!isReady) return
+
+    // CSS already sets opacity:0 + translateX + scale(0.96)
+    gsap.to(
       leftCardRef.current,
-      { opacity: 0, x: -24, scale: 0.96 },
       { opacity: 1, x: 0, scale: 1, duration: 1.3, ease: 'power4.out', delay: 0.25 }
     )
     
-    gsap.fromTo(
+    gsap.to(
       rightCardRef.current,
-      { opacity: 0, x: 24, scale: 0.96 },
       { opacity: 1, x: 0, scale: 1, duration: 1.3, ease: 'power4.out', delay: 0.25 }
     )
 
-    gsap.fromTo(
+    gsap.to(
       wiresRef.current,
-      { opacity: 0 },
       { opacity: 1, duration: 1.8, ease: 'power2.out', delay: 0.75 }
     )
-  }, [])
+  }, [isReady])
 
   return (
     <div className="floating-cards-wrapper" aria-hidden="false">
@@ -74,7 +73,7 @@ export const FloatingStatusCards: React.FC = () => {
       </svg>
 
       {/* Left Card: "AI Gateway" (Universal Multi-Model Engine) */}
-      <div ref={leftCardRef} className="status-card-unit left" tabIndex={0} role="button" aria-label="Backend Pillar: AI Gateway" style={{ opacity: 0 }}>
+      <div ref={leftCardRef} className="status-card-unit left" tabIndex={0} role="button" aria-label="Backend Pillar: AI Gateway">
         <div className="status-vector-tile">
           {/* Crisp AI Spark / Neural Node SVG Icon */}
           <svg
@@ -97,7 +96,7 @@ export const FloatingStatusCards: React.FC = () => {
       </div>
 
       {/* Right Card: "Vector DB" (Hybrid Vector + SQL Engine) */}
-      <div ref={rightCardRef} className="status-card-unit right" tabIndex={0} role="button" aria-label="Backend Pillar: Vector DB" style={{ opacity: 0 }}>
+      <div ref={rightCardRef} className="status-card-unit right" tabIndex={0} role="button" aria-label="Backend Pillar: Vector DB">
         <div className="status-vector-tile">
           {/* Crisp Vector Matrix Database SVG Icon */}
           <svg

@@ -7,6 +7,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  opacity: 0;
+  transform: translateY(32px) scale(0.98);
 }
 
 /* Left & Right laser circuit connector stems */

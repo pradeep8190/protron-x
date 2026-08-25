@@ -19,17 +19,21 @@
   pointer-events: auto;
   cursor: pointer !important;
   user-select: none;
+  opacity: 0;
+  transform: scale(0.96);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .status-card-unit.left {
   top: 15%;
   left: 4%;
+  transform: translateX(-24px) scale(0.96);
 }
 
 .status-card-unit.right {
   top: 15%;
   right: 4%;
+  transform: translateX(24px) scale(0.96);
 }
 
 /* Clean Glassmorphic Vector Squircle */

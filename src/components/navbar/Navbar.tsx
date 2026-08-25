@@ -2,20 +2,22 @@ import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import './Navbar.css'
 
-export const Navbar: React.FC = () => {
+export const Navbar: React.FC<{ isReady?: boolean }> = ({ isReady = true }) => {
   const headerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    // Premium Apple-grade slide-down fade-in on mount
-    gsap.fromTo(
+    if (!isReady) return
+
+    // Premium Apple-grade slide-down fade-in on mount / curtain open
+    // CSS already sets opacity:0 + translateY(-16px)
+    gsap.to(
       headerRef.current,
-      { opacity: 0, y: -16 },
       { opacity: 1, y: 0, duration: 1.2, ease: 'power4.out', delay: 0.1 }
     )
-  }, [])
+  }, [isReady])
 
   return (
-    <header ref={headerRef} className="navbar-header" style={{ opacity: 0 }}>
+    <header ref={headerRef} className="navbar-header">
       <div className="navbar-container">
         {/* Left Side: Brand + 2 Links */}
         <div className="navbar-left-group">

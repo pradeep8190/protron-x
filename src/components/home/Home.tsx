@@ -4,7 +4,7 @@ import { HeroHeader } from './HeroHeader'
 import { FloatingStatusCards } from './FloatingStatusCards'
 import { CodeTerminal } from './CodeTerminal'
 
-export const Home: React.FC = () => {
+export const Home: React.FC<{ isReady?: boolean }> = ({ isReady = true }) => {
   return (
     <main
       style={{
@@ -25,8 +25,8 @@ export const Home: React.FC = () => {
       {/* Background Ambient Glow, Spotlight & Grid Layer */}
       <BackgroundGlow />
 
-      {/* Floating Status Badges ("Opened" & "Clicked") */}
-      <FloatingStatusCards />
+      {/* Floating Status Badges ("AI Gateway" & "Vector DB") */}
+      <FloatingStatusCards isReady={isReady} />
 
       {/* Hero Header Area (Badge & Title) */}
       <div
@@ -45,7 +45,7 @@ export const Home: React.FC = () => {
         }}
       >
         <div style={{ pointerEvents: 'auto' }}>
-          <HeroHeader />
+          <HeroHeader isReady={isReady} />
         </div>
       </div>
 
@@ -63,7 +63,7 @@ export const Home: React.FC = () => {
           pointerEvents: 'auto',
         }}
       >
-        <CodeTerminal />
+        <CodeTerminal isReady={isReady} />
       </div>
     </main>
   )

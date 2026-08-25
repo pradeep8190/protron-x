@@ -11,6 +11,8 @@
 
 /* "Sovereign AI Infrastructure" Liquid Glass Pill Badge */
 .hero-badge-pill {
+  opacity: 0;
+  transform: translateY(-12px) scale(0.96);
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -136,9 +138,12 @@
   padding-bottom: 4px;
 }
 
-/* Metallic Gradient Word Inner */
+/* Metallic Gradient Word Inner — starts hidden for GSAP reveal */
 .hero-word-inner {
   display: inline-block;
+  opacity: 0;
+  transform: translateY(105%);
+  filter: blur(8px);
   background: linear-gradient(
     180deg,
     #ffffff 0%,
@@ -153,8 +158,10 @@
   filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.12));
 }
 
-/* Hero Subtitle Description */
+/* Hero Subtitle Description — starts hidden for GSAP reveal */
 .hero-subtitle {
+  opacity: 0;
+  transform: translateY(14px);
   font-family: 'Inter', sans-serif;
   font-size: 17px;
   font-weight: 400;
