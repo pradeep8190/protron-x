@@ -1,32 +1,36 @@
-# React + TypeScript + Vite
+# ⚡ Protron X — Unified Cloud & Backend Orchestrator
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+[![Live Demo](https://img.shields.io/badge/Demo-Live_Preview-brightgreen?style=for-the-badge&logo=vercel)](https://protron-x.vercel.app)
+[![WebGL / OGL](https://img.shields.io/badge/OGL-WebGL-blue?style=flat)](https://github.com/oframe/ogl)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react)](https://react.dev/)
+[![Lenis](https://img.shields.io/badge/Scroll-Lenis-black?style=flat)](https://github.com/darkroomengineering/lenis)
 
-Currently, two official plugins are available:
+> Next-generation cloud infrastructure orchestrator dashboard featuring real-time request tracing, WebGL shader pipelines, cinematic preloader sequence, and interactive SDK documentation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🔗 **Live Experience**: [https://protron-x.vercel.app](https://protron-x.vercel.app)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Features
 
-## Expanding the Oxlint configuration
+- **Live Request Tracer**: Real-time packet path visualization through cloud ingress nodes.
+- **High-Performance OGL Graphics**: Lightweight WebGL scene rendering with zero jank.
+- **Pipeline Inspector**: Interactive CI/CD and deployment pipeline debugger.
+- **Lenis Smooth Scroll**: Butter-smooth inertial scrolling throughout all sections.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+---
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+## 🚀 Quick Start
+
+```bash
+git clone https://github.com/pradeep8190/protron-x.git
+cd protron-x
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+---
+
+## 👤 Author
+
+**Pradeep** — [@pradeep8190](https://github.com/pradeep8190)
